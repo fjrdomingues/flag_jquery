@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>jCovid19 - Workshop</title>
+        <!-- <script>$("h1").text("not loaded yet")</script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+        <style>
+            body {
+                font-size: 17px;
+                background: #eee;
+            }
+            header {
+                background: white;
+                color: black;
+                padding: 20px;
+                text-align: center;
+            }
+            table, th, td {
+                border: 1px solid grey;
+                padding: 10px;
+                text-align: left;
+            }
+            table {
+                border-collapse: collapse;
+                margin: 0 auto;
+            }
+            #container {
+                padding: 20px;
+            }
+        </style>
+
+        <script>
+            $(document).ready(() => {
+                $("#tableToggle").click(() => {
+                    toggleTable()
+                })
+                $("a").hover(
+                    function() { $(this).css("font-weight", "bold") },
+                    function() { $(this).css("font-weight", "normal") }
+                )
+                $("tbody tr").hover(
+                    function() { $(this).css("border", "2px solid black") },
+                    function() { $(this).css("border", "1px solid grey") }
+                )
+            })
+
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Covid-19 Stats</h1>
+        </header>
+        <div id="container">
+            <h2 id="intro">Intro</h2>
+            <p id="introPara">
+                Acompanhe aqui os últimos dados sobre o <span>COVID-19</span>
+            </p>
+            <table>  
+                <thead>
+                    <tr>  
+                        <th>País</th>  
+                        <th>Casos</th>  
+                        <th>Recuperados</th>  
+                    </tr> 	 
+                </thead>
+                <tbody>
+                    <tr>  
+                        <td>China</td>  
+                        <td>80849</td>  
+                        <td>66000</td>  
+                    </tr>  
+                    <tr>  
+                        <td>Itália</td>  
+                        <td>24000</td>  
+                        <td>2335</td>  
+                    </tr> 
+                    <tr>  
+                        <td>Portugal</td>  
+                        <td>245</td>  
+                        <td>2</td>  
+                    </tr>  
+                </tbody>
+            </table>
+            <p class="warning"> Informação atualizada em <span id="date"></span></p>
+            <button id="tableToggle">Portugal Apenas</button>
+            <br>
+            <br>
+            <a href="https://example.com">Contatos</a>
+        </div>
+
+    </body>
+
+    <!-- Selectors -->
+    <script>
+        const date = "15/03/2020"
+        const tCountries = $("tbody");
+        $(".warning").css("color", "red");
+        $("p.warning span").text(date)
+
+        $("tbody tr:first").css("background", "red");
+        $("tbody tr:last").css("background", "green");
+        // $("tbody tr:even").css("background", "red");
+        $("tbody tr:nth-child(2)").css("background", "yellow");
+
+        $("tbody td:nth-child(1)").css("font-weight", "bold");
+
+        function toggleTable() {
+            const button = $("button");
+
+            if(button.text() === 'Mostrar todos') {
+                $("tbody *").show()
+                $("button").text("Portugal Apenas")
+            } else {
+                // Try first without .parent()
+                // ask if someone gets why it doesn't work
+                const portugalRow = $("td:contains('Portugal')").parent();
+                // console.log(portugalRow)
+                $("tbody tr").hide()
+                portugalRow.show()
+
+                $("button").text("Mostrar todos")
+            }
+
+        }
+    </script>
+</html>
