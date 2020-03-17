@@ -92,6 +92,7 @@ Podemos também selecionar elementos pela ordem em que aparecem.
 </table>
 ```
 Exemplos com:
+(put script on head)
 - :first
 - :last
 - :even
@@ -99,6 +100,7 @@ Exemplos com:
 - by [attr]=value
 - all
 - hide and show with button
+- [https://www.w3schools.com/jquery/trysel.asp](https://www.w3schools.com/jquery/trysel.asp)
 
 # Events
 
@@ -109,5 +111,7 @@ Events são funções que correm quando algo acontece na página. Pode ser um cl
 
 - Click -> alert
 - $(document).ready(function)
-- Click change HTML
-- Hover
+- mouseenter e mouseleave
+- focus and blur
+- keyup and e.target.value on an input
+- change on select
