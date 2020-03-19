@@ -1,5 +1,7 @@
 # jCorona - Workshop
 
+[https://github.com/fjrdomingues/flag_jquery/blob/master/Tutorial.md](https://github.com/fjrdomingues/flag_jquery/blob/master/Tutorial.md)
+
 Vamos construir uma página usando jQuery
 
 # Instalação
@@ -41,21 +43,9 @@ header {
 	box-shadow: 0px 9px 20px 0px rgba(0, 0, 0, 0.16);
 	margin: 5px 8px;
 }
-thead {
-	background: white;
-}
 header h1 {
 	padding: 20px;
 	margin: 0;
-}
-table, th, td {
-	border: 1px solid grey;
-	padding: 10px;
-	text-align: left;
-}
-table {
-	border-collapse: collapse;
-	margin: 0 auto;
 }
 #container {
 	margin-top: 50px;
@@ -102,6 +92,22 @@ Podemos também selecionar elementos pela ordem em que aparecem.
 	</tr>  
 </table>
 ```
+
+``` css
+thead {
+	background: white;
+}
+table, th, td {
+	border: 1px solid grey;
+	padding: 10px;
+	text-align: left;
+}
+table {
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+```
+
 Exemplos com:
 (put script on head)
 - :first
