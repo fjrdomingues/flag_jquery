@@ -29,26 +29,37 @@ Vamos adicionar algumas regras de estilo à página:
 
 ```css
 body {
-	font-size: 17px;
-	background: #eee;
-}
-
-header {
-	background: white;
-	color: black;
-	padding: 20px;
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+	background: #f7f7f7;
 	text-align: center;
-	margin-bottom: 20px;
 }
-
+header {
+	color: black;
+	text-align: center;
+	background: white;
+	box-shadow: 0px 9px 20px 0px rgba(0, 0, 0, 0.16);
+	margin: 5px 8px;
+}
+thead {
+	background: white;
+}
+header h1 {
+	padding: 20px;
+	margin: 0;
+}
 table, th, td {
-	border: 1px  solid  grey;
+	border: 1px solid grey;
 	padding: 10px;
 	text-align: left;
 }
-
 table {
 	border-collapse: collapse;
+	margin: 0 auto;
+}
+#container {
+	margin-top: 50px;
+	padding: 0 20%;
 }
 ```
 
@@ -107,7 +118,7 @@ Exemplos com:
 Events são funções que correm quando algo acontece na página. Pode ser um clique num botão, um hover com o rato, o momento em que página carregou todo o conteúdo, etc. A lista completa está em:
 [https://api.jquery.com/category/events/](https://api.jquery.com/category/events/)
 
-## Click
+## Exemplos
 
 - Click -> alert
 - $(document).ready(function)
