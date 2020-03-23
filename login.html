@@ -1,0 +1,109 @@
+<html>
+    <head>
+
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Roboto', sans-serif;
+                background: #f7f7f7;
+                text-align: center;
+            }
+            header {
+                color: black;
+                text-align: center;
+                background: white;
+                box-shadow: 0px 9px 20px 0px rgba(0, 0, 0, 0.16);
+                margin: 5px 8px;
+            }
+
+            header h1{
+                padding: 20px;
+                margin: 0;
+            }
+            #container {
+                margin-top: 50px;
+                padding: 0 20%;
+            }
+
+            thead {
+                background: white;
+            }
+            table, th, td {
+                border: 1px solid grey;
+                padding: 10px;
+                text-align: left;
+            }
+            table {
+                border-collapse: collapse;
+                margin: 0 auto;
+            }
+
+            .selected {
+                background: yellow;
+            }
+
+        </style>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <title>jCorona Workshop</title>
+        <!-- <script src="jquery-3.4.1.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.4.1.js"> </script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    </head>
+    <body>
+        <header>
+            <h1>jCorona Website - Registo</h1>
+        </header>
+        <div id="container">
+            <form>
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname" value=""><br>
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname" value=""><br><br>
+                <label for="sex">Sexo:</label>
+                <select id="sex">
+                    <option value="male">Masculino</option>
+                    <option value="female">Feminino</option>
+                    <option value="other">Outro</option>
+                </select>
+                <br>
+                <br>
+                <input class="waves-effect waves-light btn" type="submit" value="Submit" disabled>
+            </form>
+    </body>
+
+    <script>
+        $(() => {
+            $("#fname, #lname").focus(
+                ev => $(ev.target).css("background", "#dbb8b8")
+            )
+            $("#fname, #lname").blur(
+                ev => $(ev.target).css("background", "")
+            )
+
+            // $('input').keyup(
+            //     (ev) => console.log(ev.target.value)
+            // )
+
+            $('#fname, #lname').keyup(
+                (ev) => {
+                    if ($("#fname").val() && $("#lname").val()) {
+                        $("input[type='submit']").prop("disabled", false)
+                    } else {
+                        $("input[type='submit']").prop("disabled", true)
+                    }
+                }
+            )
+
+            $("select").change(ev => console.log(ev.target.value))
+
+
+            // $("everyone").ready(() => console.log("Podemos começar"))
+
+
+        });
+        
+    </script>
+
+    
+
+</html>

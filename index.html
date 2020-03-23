@@ -1,0 +1,224 @@
+<html>
+    <head>
+        
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Roboto', sans-serif;
+                background: #f7f7f7;
+                text-align: center;
+            }
+            header {
+                color: black;
+                text-align: center;
+                background: white;
+                box-shadow: 0px 9px 20px 0px rgba(0, 0, 0, 0.16);
+                margin: 5px 8px;
+            }
+
+            header h1{
+                padding: 20px;
+                margin: 0;
+            }
+            #container {
+                margin-top: 50px;
+                padding: 0 20%;
+            }
+
+            thead {
+                background: white;
+            }
+            table, th, td {
+                border: 1px solid grey;
+                padding: 10px;
+                text-align: left;
+            }
+            table {
+                border-collapse: collapse;
+                margin: 0 auto;
+            }
+
+            .selected {
+                background: yellow;
+            }
+
+        </style>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <title>jCorona Workshop</title>
+        <!-- <script src="jquery-3.4.1.min.js"></script> -->
+        <script src="https://code.jquery.com/jquery-3.4.1.js"> </script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    </head>
+    <body>
+        <header>
+            <h1>jCorona Website</h1>
+        </header>
+        <div id="container">
+            <h2 id="intro">Informação sobre o Covid-19</h2>
+            <p id="introPara">
+                Aqui encontram a informação atualizada sobre o <span>COVID-19</span>
+            </p>
+            <p id="para2">Siga a nossa página diariamente</p>
+
+            <table>  
+                <thead>
+                    <tr>  
+                        <th>País</th>  
+                        <th>Casos</th>  
+                        <th>Recuperados</th>  
+                    </tr> 	 
+                </thead>
+                <tbody>
+                    <!-- <tr>  
+                        <td>China</td>  
+                        <td>80849</td>  
+                        <td>66000</td>  
+                    </tr>  
+                    <tr>  
+                        <td>Itália</td>  
+                        <td>40000</td>  
+                        <td>5000</td>  
+                    </tr>  
+                    <tr>  
+                        <td>Portugal</td>  
+                        <td>245</td>  
+                        <td>2</td>  
+                    </tr>   -->
+                </tbody>
+            </table>
+
+            <br>
+            <br>
+            <button class="waves-effect waves-light btn" id="btnTable">Apenas Portugal</button>
+
+            <h2 class="titulo2"> Info atualizada a 20/03/2020 </h2>
+            <p class="titulo2"> Info atualizada a 20/03/2020 </p>
+
+            <!-- <div id=teste>
+                <p>Teste</p>
+                <div>
+                    <p>Teste2</p>
+                </div>
+            </div> -->
+            <a href="https://example.com">Contacte-nos</a>
+        </div>
+    </body>
+
+    <script>
+        $(() => {
+            const btn = $("#btnTable")
+            let show = 1
+
+            // jQuery Selectors
+            // $("h1").css("color","red")
+            $("#intro").css("color","red")
+            // $(".titulo2").css("color","blue")
+            // $("p#introPara span").css("color","blue")
+            $("table tr td:first-child").css("font-weight","bold")
+            $("table tr td:nth-child(2)").css("color","red")
+            $("table tr td:last-child").css("color","green")
+            $("table tr:first").css("background","white")
+
+            // jQuery Events
+            btn.click(() => {
+                if(show ===1 ) {
+                    // $("table tr:nth-child(2)").hide()
+                    $("tbody tr *").hide()
+                    // $("tr:last").show()
+                    $("td:contains('Portugal')").parent().show().find("td").show()
+        
+                    btn.text("Mostrar Todos")
+                    show = 0
+                } else {
+                    $("tbody tr *").show()
+                    btn.text("Apenas Portugal")
+                    show = 1
+                }
+            })
+
+            // $("tbody tr").mouseenter((ev) => {
+            //     $(ev.currentTarget).css("background", "yellow");
+            // })
+
+            // $("tbody tr").mouseleave((ev) => {
+            //     $(ev.currentTarget).css("background", "");
+            // })
+
+            // const fnIn = (ev) => $(ev.currentTarget).addClass("selected")
+
+            // $("tbody tr").hover(
+            //     fnIn,
+            //     (ev) => $(ev.currentTarget).removeClass("selected")
+            // )
+
+            // $("tbody tr").mouseenter((ev) => {
+            //     $(ev.currentTarget).css("background", "yellow");
+            // })
+
+            $("tbody").on("mouseenter", "tr" , (ev) => {
+                $(ev.currentTarget).css("background", "yellow");
+            })
+
+            $("tbody").on("mouseleave", "tr" , (ev) => {
+                $(ev.currentTarget).css("background", "");
+            })
+
+            // $("tbody tr").mouseleave((ev) => {
+            //     $(ev.currentTarget).css("background", "");
+            // })
+            
+            // $("tbody").append(`
+            //     <tr>
+            //         <td>Espanha</td>
+            //         <td>30000</td>
+            //         <td>200</td>
+            //     </tr>
+            // `)
+
+
+            // $("#btnTable").click(otherFunction)
+
+            // function otherFunction() {
+            //     alert("YEY");
+            // }
+        });
+        
+    </script>
+
+    <script>
+        // $("tbody").append(`
+        //     <tr>
+        //         <td>USA</td>
+        //         <td>50000</td>
+        //         <td>400</td>
+        //     </tr>
+        // `)
+
+    </script>
+
+    <script>
+        let listOfCountries = [
+            {name: "China", cases: 80849, recovered: 66000},
+            {name: "Itália", cases: 24000, recovered: 2335},
+            {name: "Portugal", cases: 245, recovered: 2},
+            {name: "USA", cases: 1000, recovered: 50},
+        ]
+
+        $.each(listOfCountries, (i, country) => {
+            $("tbody").append(`
+                <tr>
+                    <td>${country.name}</td>
+                    <td>${country.cases}</td>
+                    <td>${country.recovered}</td>
+                </tr>
+            `)
+        })
+
+
+
+
+    </script>
+
+</html>
