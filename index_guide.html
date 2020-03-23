@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>jCovid19 - Workshop</title>
+        <!-- <script>$("h1").text("not loaded yet")</script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Roboto', sans-serif;
+                background: #f7f7f7;
+                text-align: center;
+            }
+            header {
+                color: black;
+                text-align: center;
+                background: white;
+                box-shadow: 0px 9px 20px 0px rgba(0, 0, 0, 0.16);
+                margin: 5px 8px;
+                height: 80px;
+            }
+            thead {
+                background: white;
+            }
+            header h1 {
+                padding: 20px;
+                margin: 0;
+            }
+            table, th, td {
+                border: 1px solid grey;
+                padding: 10px;
+                text-align: left;
+            }
+            table {
+                border-collapse: collapse;
+                margin: 0 auto;
+            }
+            #container {
+                margin-top: 50px;
+                padding: 0 20%;
+            }
+
+            #navMenu {
+                position: absolute;
+                height: 30px;
+                width: 30px;
+                background: url(https://img.icons8.com/metro/26/000000/menu.png);
+                background-size: contain;
+                top: 28px;
+                left: 25px;
+            }
+
+            #sideNav {
+                position: absolute;
+                height: 100vh;
+                width: 30vw;
+                top: 5px;
+                background: white;
+                left: -30vw;
+            }
+            #closeSideNav {
+                font-size: 40px;
+                float: right;
+                margin-right: 20px;
+                cursor: pointer;
+            }
+            #navLinks {
+                margin-top: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Covid-19 Stats</h1>
+            <div id="navMenu"></div>
+            <div id="sideNav">
+                <div id="closeSideNav">x</div>
+                <div id="navLinks">
+                    <a href="login_guide.html">Login</a>
+                </div>
+
+            </div>
+        </header>
+        <div id="container">
+            <h2 id="intro">Tabela de países</h2>
+            <p id="introPara">
+                Acompanhe aqui os últimos dados sobre o <span>COVID-19</span>
+            </p>
+            <table>  
+                <thead>
+                    <tr>  
+                        <th>País</th>  
+                        <th>Casos</th>  
+                        <th>Recuperados</th>  
+                    </tr> 	 
+                </thead>
+                <tbody>
+                    <!-- <tr>  
+                        <td>China</td>  
+                        <td>80849</td>  
+                        <td>66000</td>  
+                    </tr>  
+                    <tr>  
+                        <td>Itália</td>  
+                        <td>24000</td>  
+                        <td>2335</td>  
+                    </tr> 
+                    <tr>  
+                        <td>Portugal</td>  
+                        <td>245</td>  
+                        <td>2</td>  
+                    </tr>   -->
+                </tbody>
+            </table>
+            <p class="warning"> Informação atualizada em <span id="date"></span></p>
+            <button class="btn-primary" onclick="toggleTable()">Portugal Apenas</button>
+        </div>
+
+    </body>
+
+    <script>
+        $("document").ready(() => {
+            // console.log($("#newRow").html())
+
+            const fnEnter = (ev) => { $(ev.currentTarget).css("background","yellow") }
+
+
+            $("tbody tr").hover(
+                //mouse enter
+                fnEnter,
+                // mouse leave
+                (ev) => { $(ev.currentTarget).css("background","") },
+            )
+        })
+    </script>
+
+    <!-- Selectors -->
+    <script>
+        const date = "15/03/2020"
+        const tCountries = $("tbody");
+
+        // $("tbody").append(`
+        //     <tr id="newRow">  
+        //         <td>USA</td>  
+        //         <td>1000</td>  
+        //         <td>50</td>  
+        //     </tr> 
+        // `)
+        $(".warning").css("color", "red");
+        $("p.warning span").text(date)
+
+        // $("tbody tr:first").css("background", "red");
+        // $("tbody tr:last").css("background", "green");
+        // $("tbody tr:even").css("background", "red");
+        // $("tbody tr:nth-child(2)").css("background", "yellow");
+
+        $("tbody td:nth-child(1)").css("font-weight", "bold");
+
+        function toggleTable() {
+            const button = $("button");
+
+            if(button.text() === 'Mostrar todos') {
+                $("tbody tr").fadeOut()
+                $("tbody *").fadeIn()
+                $("button").text("Portugal Apenas")
+            } else {
+                // Try first without .parent()
+                // ask if someone gets why it doesn't work
+                const portugalRow = $("td:contains('Portugal')").parent();
+                // console.log(portugalRow)
+                $("tbody tr").fadeOut()
+                portugalRow.fadeIn()
+
+                $("button").text("Mostrar todos")
+            }
+
+        }
+    </script>
+
+    <script>
+        let listOfCountries = [
+            {name: "China", cases: 80849, recovered: 66000},
+            {name: "Itália", cases: 24000, recovered: 2335},
+            {name: "Portugal", cases: 245, recovered: 2},
+            {name: "USA", cases: 1000, recovered: 50},
+        ]
+
+        $.each(listOfCountries, (i, country) => {
+            $("tbody").append(`
+                <tr>
+                    <td>${country.name}</td>
+                    <td>${country.cases}</td>
+                    <td>${country.recovered}</td>
+                </tr>
+            `)
+        })
+    </script>
+    <script>
+        $("#navMenu").click((e) => {
+            $("#sideNav").animate({left: 0})
+        })
+        $("#closeSideNav").click((e) => {
+            $("#sideNav").animate({left: "-30vw"})
+        })
+    </script>
+
+    <!-- AJAX GET (corona data updated) -->
+    <script>
+        $.get("https://pomber.github.io/covid19/timeseries.json")
+            .then((data) => {
+                $.each(data, (i, country) => {
+                    const countryName = i
+                    const confirmed = country[country.length - 1].confirmed
+                    const recovered = country[country.length - 1].recovered
+                    $("tbody").append(
+                        `<tr>
+                            <td>${countryName}</td>
+                            <td>${confirmed}</td>
+                            <td>${recovered}</td>
+                        </tr`
+                    )
+                })
+            })
+    </script>
+</html> 

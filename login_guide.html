@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>jCovid19 - Workshop</title>
+        <!-- <script>$("h1").text("not loaded yet")</script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Roboto', sans-serif;
+                background: #f7f7f7;
+                text-align: center;
+            }
+            header {
+                color: black;
+                text-align: center;
+                background: white;
+                box-shadow: 0px 9px 20px 0px rgba(0, 0, 0, 0.16);
+                margin: 5px 8px;
+            }
+            thead {
+                background: white;
+            }
+            header h1 {
+                padding: 20px;
+                margin: 0;
+            }
+            table, th, td {
+                border: 1px solid grey;
+                padding: 10px;
+                text-align: left;
+            }
+            table {
+                border-collapse: collapse;
+                margin: 0 auto;
+            }
+            #container {
+                margin-top: 50px;
+                padding: 0 20%;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Covid-19 Stats - Login</h1>
+        </header>
+        <div id="container">
+            <form>
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname" value="Steve"><br>
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname" value="Jobs"><br><br>
+                <label for="sex">Sexo:</label>
+                <select id="sex">
+                    <option value="male">Masculino</option>
+                    <option value="female">Feminino</option>
+                    <option value="other">Outro</option>
+                </select>
+                <input type="submit" value="Submit">
+            </form>
+            
+
+            <h3>Results</h3>
+            <div id="name"> </div>
+            <div id="sexo"> </div>
+        </div>
+    </body>
+
+    <script>
+        // Shorthand for $( document ).ready()
+        $(() => {
+            $("#fname").keyup((ev) => {
+                console.log("First name: " + ev.currentTarget.value)
+            })
+
+            $("#sex").change(e => $("#sexo").text(e.currentTarget.value))
+
+            $("form").submit((e) => {
+                //prevent Default functionality
+                e.preventDefault();
+                $("#name").text(
+                    `
+                    ${e.target.children.fname.value} ${e.target.children.lname.value}
+                    `
+                )
+
+            })
+
+
+        });
+    </script>
+</html>
