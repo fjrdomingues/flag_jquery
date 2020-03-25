@@ -255,10 +255,25 @@ Adicionar uma side nav
 </div>
 ```
 
+- animate method
 - fadeIn e fadeOut
 
 
 # AJAX
+
+We can run a server with Node.js
+
+```
+npm install -g http-server > cd /path/to/project/folder > http-server
+```
+
+## CORS :/
+
+https://alfilatov.com/posts/run-chrome-without-cors/
+
+```
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
+```
 
 ## GET
 
@@ -270,4 +285,55 @@ Vamos tornar a nova tabela dinâmica com dados reais
 
 Enviar data de login para mock server
 
-- https://beeceptor.com/console/jcorona
+- https://users-0363.restdb.io/rest/users
+
+
+```json
+{
+	"x-apikey": "809db8840c60ff7eeeb75a4a2235cb2f18bc8"
+}
+
+{
+  "email": "fjrdomingues@gmail.com",
+  "active": true
+}
+```
+
+# Plugins
+
+Plugins são extensões ao jQuery que adicionam novas funcionalidades.
+
+https://learn.jquery.com/plugins/
+
+## Uma simples extensão
+
+https://learn.jquery.com/plugins/basic-plugin-creation/
+
+## jQuery UI
+
+https://jqueryui.com/demos/
+
+## Extensões no google ou npm
+
+
+# jQuery em outros websites
+
+Um uso frequente que dou ao jQuery é fazer alterações ou procurar informação em outros websites
+
+## Adicionar jQuery a outros websites
+
+```js
+	var jq = document.createElement('script');
+	jq.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js";
+	document.getElementsByTagName('head')[0].appendChild(jq);
+	// ... give time for script to load, then type (or see below for non wait option)
+	jQuery.noConflict();
+```
+
+### O OLX como o queremos
+
+- remove ads
+- remove "destaques"
+- hide everything but table
+- Clean rows, easier to read (van icon, favorites, value bigger)
+- filter by value
